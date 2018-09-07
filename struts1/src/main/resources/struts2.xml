@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd" >
+<struts>
+	<package namespace="/student" name="com.han.struts1" extends="struts-default">
+		<default-action-ref name="hello"></default-action-ref>
+	 	<global-allowed-methods>regex:.*</global-allowed-methods>
+	 	<action name="hello">
+			<result name="success">/WEB-INF/hello.jsp</result>
+		</action>
+		
+		<action name="show" class="com.han.action.ShowAction">
+			<result>/WEB-INF/success.jsp</result>
+			<result name="fail">/WEB-INF/fail.jsp</result>
+		</action>
+		<action name="show2" class="com.han.action.ShowAction" method="show">
+			<result type="dispatcher">/WEB-INF/success.jsp</result>
+			<result name="fail">/WEB-INF/fail.jsp</result>
+		</action>
+		 
+		
+		<action name="*_*_*" class="com.han.{3}.{1}Action" method="{2}">
+			<result>/WEB-INF/{3}/{1}_{2}.jsp</result>
+		</action>
+		
+		
+	</package>
+	
+</struts>
